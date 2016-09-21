@@ -10,13 +10,8 @@ void setup() {
 }
 
 void loop() {
-
- 
-    
-      pixels.setPixelColor(0, pixels.Color(random(0, 255),random(0,255),random(0, 255))); // Moderately bright green color.
-       pixels.setPixelColor(1, pixels.Color(random(0, 255),random(0,255),random(0, 255))); // Moderately bright green color.
+      pixels.setPixelColor(0, pixels.Color(0, ); // Moderately bright green color.
+      pixels.setPixelColor(1, pixels.Color(random(0, 255),random(0,255),random(0, 255))); // Moderately bright green color.
       pixels.show(); // This sends the updated pixel color to the hardware.
-     
-    
-  
+      delay(100);
 }
