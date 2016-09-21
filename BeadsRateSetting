@@ -1,0 +1,59 @@
+import beads.*;
+import java.util.Arrays; 
+
+AudioContext ac;
+Glide rateValue;
+SamplePlayer player;
+boolean playingA = true;
+
+void setup() {
+  size(300,300);
+  ac = new AudioContext();
+  rateValue = new Glide(ac, 1, 30); 
+  
+  Sample wicked = SampleManager.sample(sketchPath("billieJean.mp3")); 
+   player = new SamplePlayer(ac,wicked);
+  Gain g = new Gain(ac, 2, 0.2);
+  g.addInput(player);
+  ac.out.addInput(g);
+  ac.start();
+  player.setRate(rateValue);
+  
+}
+
+
+
+
+void draw() {
+   
+   if(playingA == true){
+   try{
+      float f = map(mouseX, 0, width, -2,2);
+   if(player.getPosition()<100 && f < 0){
+     f = 0;
+     player.setPosition(100);
+   }else{
+   rateValue.setValue(f); 
+   }
+   println(player.getPosition());
+ 
+   }catch(Exception e){
+     
+   }
+  }
+}
+
+void keyPressed(){
+  try{
+  if (keyCode == RIGHT){
+    playingA = false;
+    rateValue.setValue(0);
+  }
+  if (keyCode == LEFT){
+    playingA = true;
+    rateValue.setValue(1);
+  }
+  }catch(Exception e){
+    
+  }
+}
