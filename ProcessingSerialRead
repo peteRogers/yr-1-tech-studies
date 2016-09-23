@@ -1,0 +1,25 @@
+import processing.serial.*;
+ 
+int lf = 10; //ASCII for end of line or line feed  
+int value; // value read from arduino
+Serial myPort;  //the Serial connection to processing
+ 
+void setup() {
+  size(800,600);
+  printArray(Serial.list());
+  myPort = new Serial(this, Serial.list()[5], 9600);
+}
+ 
+void draw() {
+  background(0);
+  rect(width/2, height, 100, -value/2); 
+}
+
+void serialEvent (Serial p){
+    String myString = p.readStringUntil(lf);
+    if (myString != null) {
+      myString = trim(myString);
+      value = int(myString);
+      println(value);
+    }
+ }
