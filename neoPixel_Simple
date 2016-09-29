@@ -23,7 +23,7 @@ void loop() {
 //some extra functions
 void allPixels(uint32_t col){
   for (int i = 0; i < NUMPIXELS; i ++){
-    pixels.setPixelColor(2, col);
+    pixels.setPixelColor(i, col);
   }
 }
 
