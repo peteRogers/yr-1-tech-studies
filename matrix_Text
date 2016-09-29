@@ -1,0 +1,20 @@
+#include <Wire.h>
+#include "Adafruit_LEDBackpack.h"
+#include "Adafruit_GFX.h"
+Adafruit_BicolorMatrix matrix = Adafruit_BicolorMatrix();
+
+void setup() {
+  matrix.begin(0x70);  // pass in the address
+   matrix.setTextWrap(false);
+}
+
+void loop() {
+  matrix.setTextColor(LED_RED);
+  for (int8_t x=7; x>=-72; x--) {
+    matrix.clear();
+    matrix.setCursor(x,0);
+    matrix.print("Hello World");
+    matrix.writeDisplay();
+    delay(50);
+  }
+}
